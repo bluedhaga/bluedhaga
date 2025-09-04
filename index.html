@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blue Dhaga Kids</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #fdfdfd;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(90deg, #2563eb, #9333ea);
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.7rem;
+      display: flex;
+      align-items: center;
+    }
+    header img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 15px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #facc15;
+    }
+    .hero {
+      background: url('https://images.unsplash.com/photo-1603252109361-0e9a5d26d2b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') no-repeat center/cover;
+      height: 70vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      flex-direction: column;
+      position: relative;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+    }
+    .hero h2, .hero p, .hero a {
+      position: relative;
+      z-index: 1;
+    }
+    .hero h2 {
+      font-size: 2.8rem;
+      margin: 0;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin: 10px 0;
+    }
+    .btn {
+      background: #facc15;
+      color: #1e3a8a;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn:hover {
+      background: #f59e0b;
+    }
+    .section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .section h3 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #2563eb;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+    .product {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: transform 0.3s;
+    }
+    .product:hover {
+      transform: translateY(-5px);
+    }
+    .product img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+    footer {
+      background: linear-gradient(90deg, #9333ea, #2563eb);
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>
+      <img src="Media (1).jpeg" alt="Blue Dhaga"> Blue Dhaga Kids
+    </h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <h2>Elegant Kids Wear for Every Occasion</h2>
+    <p>Crafted with love by Blue Dhaga</p>
+    <a class="btn" href="https://wa.me/919904659577" target="_blank">Shop Now on WhatsApp</a>
+  </section>
+
+  <section class="section" id="shop">
+    <h3>Our Collection</h3>
+    <div class="products">
+      <div class="product">
+        <img src="Media (2).jpeg" alt="Frock">
+        <h4>new collection of child wear Handwork Frock</h4>
+        <p>Elegant design, perfect for parties.</p>
+      </div>
+      <div class="product">
+        <img src="Media (3).jpeg" alt="Kurta">
+        <h4>Wedding Collations </h4>
+        <p>Traditional wear with modern comfort.</p>
+      </div>
+      <div class="product">
+        <img src="Media (4).jpeg" alt="New Arrivals">
+        <h4>New Arrivals</h4>
+        <p>Fresh styles for every occasion.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <h3>About Us</h3>
+    <p>At <b>Blue Dhaga Kids</b>, we believe every child deserves to shine. Our collection is thoughtfully designed with premium fabrics, vibrant colors, modern styles, and a touch of tradition. Whether it’s birthdays, parties, or festivals – we’ve got the perfect outfit for your little one.</p>
+  </section>
+
+  <section class="section" id="contact">
+    <h3>Contact Us</h3>
+    <p>📍 Surat, India</p>
+    <p>📞 +91-9904659577</p>
+    <p>📧 support@bluedhaga.com</p>
+    <p>📲 Follow us on Instagram & Facebook</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Blue Dhaga Kids | All Rights Reserved</p>
+  </footer>
+</body>
+</html>
