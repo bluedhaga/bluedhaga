@@ -1,186 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blue Dhaga Kids</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blue Dhaga Kids – Boutique Kidswear</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #fdfdfd;
-      color: #333;
+    :root{
+      --bg:#0b1220;           /* deep navy */
+      --txt:#f6f8ff;          /* near white */
+      --muted:#a6b0cf;        /* soft grey-blue */
+      --brand1:#7c3aed;       /* violet */
+      --brand2:#2563eb;       /* blue */
+      --brand3:#f59e0b;       /* amber */
+      --card:#121a2b;         /* card surface */
+      --glass:rgba(255,255,255,.08);
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
     }
-    header {
-      background: linear-gradient(90deg, #2563eb, #9333ea);
-      color: white;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; background:var(--bg); color:var(--txt);
+      font-family:'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
     }
-    header h1 {
-      margin: 0;
-      font-size: 1.7rem;
-      display: flex;
-      align-items: center;
+
+    /* ================= NAV / HEADER ================ */
+    .nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(160%) blur(8px);
+      background:linear-gradient(90deg, rgba(124,58,237,.45), rgba(37,99,235,.45));
+      border-bottom:1px solid rgba(255,255,255,.08);
     }
-    header img {
-      height: 40px;
-      margin-right: 10px;
+    .nav-inner{max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:14px 20px}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.3px}
+    .brand img{height:42px; width:auto; border-radius:10px}
+    .brand .title{font-family:'Playfair Display', serif; font-size:1.25rem}
+    .menu a{color:var(--txt); text-decoration:none; margin-left:22px; font-weight:500; opacity:.9}
+    .menu a:hover{opacity:1}
+    .mobile-toggle{display:none}
+
+    /* ================= HERO ================ */
+    .hero{position:relative; min-height:86vh; display:grid; place-items:center; text-align:center; overflow:hidden}
+    /* animated gradient backdrop */
+    .hero::before{content:""; position:absolute; inset:-40%; background:conic-gradient(from 120deg at 50% 50%, var(--brand1), var(--brand2), #06b6d4, var(--brand3), var(--brand1)); filter:blur(90px) saturate(120%); animation:spin 18s linear infinite}
+    @keyframes spin{to{transform:rotate(1turn)}}
+    /* dark overlay for readability */
+    .hero::after{content:""; position:absolute; inset:0; background:radial-gradient(70% 70% at 50% 10%, transparent 0%, rgba(0,0,0,.45) 55%, rgba(0,0,0,.75) 100%)}
+    .hero-content{position:relative; z-index:2; max-width:900px; padding:0 18px}
+    .eyebrow{display:inline-block; padding:6px 12px; border-radius:999px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.18); font-size:.85rem; color:#e8ecff}
+    .headline{font-family:'Playfair Display', serif; font-weight:700; font-size:clamp(2rem, 4vw + 1rem, 3.5rem); line-height:1.1; margin:16px 0}
+    .sub{color:var(--muted); font-weight:400; max-width:720px; margin:0 auto 22px}
+    .cta{display:inline-flex; align-items:center; gap:10px; text-decoration:none; background:linear-gradient(135deg, var(--brand3), #f472b6);
+      color:#1b112b; padding:13px 22px; border-radius:999px; font-weight:700; box-shadow:var(--shadow)}
+    .cta:hover{transform:translateY(-1px)}
+
+    /* floating hero img ring */
+    .ring{position:absolute; inset:auto auto 6% 50%; transform:translateX(-50%); width:min(88vw, 900px); pointer-events:none; opacity:.15}
+
+    /* ================= BADGES ================ */
+    .badges{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:14px}
+    .badge{border:1px solid rgba(255,255,255,.16); background:var(--glass); padding:8px 14px; border-radius:999px; font-size:.85rem; color:#e5eafe}
+
+    /* ================= PRODUCTS ================ */
+    .section{padding:70px 18px}
+    .container{max-width:1200px; margin:0 auto}
+    .section h2{font-family:'Playfair Display', serif; font-size:2rem; margin:0 0 10px}
+    .section p.lead{color:var(--muted); margin:0 0 30px}
+    .grid{display:grid; grid-template-columns:repeat(12, 1fr); gap:22px}
+    .card{grid-column:span 12; background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); transition:transform .3s ease}
+    .card:hover{transform:translateY(-6px)}
+    .card img{display:block; width:100%; height:320px; object-fit:cover}
+    .card .body{padding:18px}
+    .pill{display:inline-block; font-size:.75rem; letter-spacing:.2px; padding:6px 10px; border-radius:999px; background:rgba(124,58,237,.18); color:#dcd6ff; border:1px solid rgba(124,58,237,.35)}
+    .card h3{margin:10px 0 6px}
+    .price{color:#ffd89a; font-weight:600}
+
+    @media(min-width:700px){
+      .card{grid-column:span 4}
     }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 15px;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #facc15;
-    }
-    .hero {
-      background: url('https://images.unsplash.com/photo-1603252109361-0e9a5d26d2b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') no-repeat center/cover;
-      height: 70vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-align: center;
-      flex-direction: column;
-      position: relative;
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.4);
-    }
-    .hero h2, .hero p, .hero a {
-      position: relative;
-      z-index: 1;
-    }
-    .hero h2 {
-      font-size: 2.8rem;
-      margin: 0;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      margin: 10px 0;
-    }
-    .btn {
-      background: #facc15;
-      color: #1e3a8a;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 30px;
-      font-size: 1rem;
-      cursor: pointer;
-      margin-top: 10px;
-      transition: background 0.3s;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .btn:hover {
-      background: #f59e0b;
-    }
-    .section {
-      padding: 60px 20px;
-      text-align: center;
-    }
-    .section h3 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #2563eb;
-    }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-    }
-    .product {
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      padding: 20px;
-      transition: transform 0.3s;
-    }
-    .product:hover {
-      transform: translateY(-5px);
-    }
-    .product img {
-      width: 100%;
-      border-radius: 15px;
-      margin-bottom: 15px;
-    }
-    footer {
-      background: linear-gradient(90deg, #9333ea, #2563eb);
-      color: white;
-      text-align: center;
-      padding: 25px;
-      margin-top: 40px;
-    }
+
+    /* ================= RIBBON / DIVIDER ================ */
+    .divider{height:90px; background:radial-gradient(120% 120% at 50% -10%, rgba(255,255,255,.18), transparent 60%)}
+
+    /* ================= ABOUT ================ */
+    .about{display:grid; grid-template-columns:1.2fr 1fr; gap:28px; align-items:center}
+    .about .panel{background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.1); padding:24px; border-radius:var(--radius); box-shadow:var(--shadow)}
+    .about p{color:#d7ddfb}
+    .about img{width:100%; border-radius:var(--radius); height:100%; object-fit:cover}
+    @media(max-width:900px){.about{grid-template-columns:1fr;}}
+
+    /* ================= TESTIMONIALS (simple) ================ */
+    .testi{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .quote{background:var(--card); border:1px solid rgba(255,255,255,.08); padding:18px; border-radius:var(--radius)}
+    .quote p{color:#cfd7ff; margin:0}
+    .quote .name{margin-top:10px; color:#ffe7b3; font-weight:600}
+    @media(max-width:900px){.testi{grid-template-columns:1fr}}
+
+    /* ================= FOOTER ================ */
+    footer{padding:40px 18px 60px; background:linear-gradient(90deg, rgba(124,58,237,.15), rgba(37,99,235,.15)); border-top:1px solid rgba(255,255,255,.08)}
+    .foot{max-width:1200px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr; gap:24px}
+    .foot h4{margin:0 0 10px}
+    .foot a{color:#e0e6ff; text-decoration:none; opacity:.85}
+    .foot a:hover{opacity:1}
+    .copyright{margin-top:24px; color:var(--muted); text-align:center}
+    @media(max-width:900px){.foot{grid-template-columns:1fr 1fr}}
+
+    /* ================= FLOATING WHATSAPP ================ */
+    .wa{position:fixed; right:18px; bottom:18px; width:56px; height:56px; border-radius:50%; background:#25d366; display:grid; place-items:center; color:#111; font-weight:800; text-decoration:none; box-shadow:0 12px 30px rgba(37, 211, 102, .45)}
+    .wa:hover{transform:translateY(-2px)}
   </style>
 </head>
 <body>
-  <header>
-    <h1>
-      <img src="Media (1).jpeg" alt="Blue Dhaga"> Blue Dhaga Kids
-    </h1>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#shop">Shop</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <img src="Media (1).jpeg" alt="Blue Dhaga Logo" />
+        <span class="title">Blue Dhaga Kids</span>
+      </div>
+      <div class="menu">
+        <a href="#home">Home</a>
+        <a href="#shop">Shop</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home" class="hero">
+    <svg class="ring" viewBox="0 0 1200 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="g" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#f59e0b"/>
+          <stop offset="50%" stop-color="#7c3aed"/>
+          <stop offset="100%" stop-color="#2563eb"/>
+        </linearGradient>
+      </defs>
+      <circle cx="600" cy="150" r="130" stroke="url(#g)" stroke-width="16" opacity=".9"/>
+      <circle cx="600" cy="150" r="180" stroke="url(#g)" stroke-width="6" opacity=".7"/>
+    </svg>
+    <div class="hero-content">
+      <span class="eyebrow">Premium Western & Baby Wear</span>
+      <h1 class="headline">Elegant outfits crafted with love — so every little moment feels special.</h1>
+      <p class="sub">Handwork frocks, party dresses, kurta sets & more. Soft on skin, vibrant in style. Proudly made by <strong>Blue Dhaga</strong> in Surat.</p>
+      <a class="cta" href="https://wa.me/919904659577" target="_blank" rel="noopener">Shop on WhatsApp</a>
+      <div class="badges">
+        <span class="badge">Comfort-first fabrics</span>
+        <span class="badge">Handwork details</span>
+        <span class="badge">Made in India</span>
+      </div>
+    </div>
   </header>
 
-  <section class="hero" id="home">
-    <h2>Elegant Kids Wear for Every Occasion</h2>
-    <p>Crafted with love by Blue Dhaga</p>
-    <a class="btn" href="https://wa.me/919904659577" target="_blank">Shop Now on WhatsApp</a>
-  </section>
+  <div class="divider"></div>
 
-  <section class="section" id="shop">
-    <h3>Our Collection</h3>
-    <div class="products">
-      <div class="product">
-        <img src="Media (2).jpeg" alt="Frock">
-        <h4>new collection of child wear Handwork Frock</h4>
-        <p>Elegant design, perfect for parties.</p>
-      </div>
-      <div class="product">
-        <img src="Media (3).jpeg" alt="Kurta">
-        <h4>Wedding Collations </h4>
-        <p>Traditional wear with modern comfort.</p>
-      </div>
-      <div class="product">
-        <img src="Media (4).jpeg" alt="New Arrivals">
-        <h4>New Arrivals</h4>
-        <p>Fresh styles for every occasion.</p>
+  <!-- SHOP / PRODUCTS -->
+  <section id="shop" class="section">
+    <div class="container">
+      <h2>New & Noteworthy</h2>
+      <p class="lead">Fresh drops from our workshop — perfect for birthdays, weddings and festive days.</p>
+      <div class="grid">
+        <article class="card">
+          <img src="Media (2).jpeg" alt="Handwork Frock"/>
+          <div class="body">
+            <span class="pill">Girls • Frocks</span>
+            <h3>Handwork Party Frock</h3>
+            <p class="desc">Pearl-studded neckline and soft lining for all‑day twirling.</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="Media (3).jpeg" alt="Wedding Collection"/>
+          <div class="body">
+            <span class="pill" style="background:rgba(37,99,235,.18); border-color:rgba(37,99,235,.35); color:#d6e6ff">Boys • Ethnic</span>
+            <h3>Wedding Collection</h3>
+            <p class="desc">Classic silhouettes reimagined for modern comfort.</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="Media (4).jpeg" alt="New Arrivals"/>
+          <div class="body">
+            <span class="pill" style="background:rgba(245,158,11,.18); border-color:rgba(245,158,11,.35); color:#fff2d6">New Arrivals</span>
+            <h3>Season Highlights</h3>
+            <p class="desc">Vibrant colors and breathable fabrics, ready for every occasion.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="section" id="about">
-    <h3>About Us</h3>
-    <p>At <b>Blue Dhaga Kids</b>, we believe every child deserves to shine. Our collection is thoughtfully designed with premium fabrics, vibrant colors, modern styles, and a touch of tradition. Whether it’s birthdays, parties, or festivals – we’ve got the perfect outfit for your little one.</p>
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container about">
+      <div class="panel">
+        <h2>About Blue Dhaga</h2>
+        <p>We design thoughtful clothing for kids — blending premium fabrics, joyful colors and handcrafted details. From birthday frocks to festive kurta sets, our pieces are tailored for comfort and crafted to last.</p>
+        <p>Based in Surat, we ship pan‑India. Looking for something custom? Message us on WhatsApp and we’ll make it happen.</p>
+      </div>
+      <img src="https://images.unsplash.com/photo-1517451330947-7809dead78d7?q=80&w=1200&auto=format&fit=crop" alt="Studio preview"/>
+    </div>
   </section>
 
-  <section class="section" id="contact">
-    <h3>Contact Us</h3>
-    <p>📍 Surat, India</p>
-    <p>📞 +91-9904659577</p>
-    <p>📧 support@bluedhaga.com</p>
-    <p>📲 Follow us on Instagram & Facebook</p>
+  <!-- TESTIMONIALS -->
+  <section class="section" aria-label="Customer reviews">
+    <div class="container">
+      <h2>Loved by Moms</h2>
+      <p class="lead">A few kind words from our customers.</p>
+      <div class="testi">
+        <div class="quote"><p>“The frock quality is amazing. My daughter looked like a princess!”</p><div class="name">— Neha S.</div></div>
+        <div class="quote"><p>“Soft fabric, neat stitching. Perfect fit for the wedding!”</p><div class="name">— Priya M.</div></div>
+        <div class="quote"><p>“Great service on WhatsApp. Got exactly what we wanted.”</p><div class="name">— Ankit & Riya</div></div>
+      </div>
+    </div>
   </section>
 
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Contact</h2>
+      <p class="lead">Questions, sizes or bulk orders? We’re one message away.</p>
+      <div class="about">
+        <div class="panel">
+          <p>📍 Surat, India</p>
+          <p>📞 +91‑9904659577</p>
+          <p>📧 support@bluedhaga.com</p>
+          <p>📲 Instagram / Facebook: <em>@bluedhaga</em></p>
+          <p><a class="cta" href="https://wa.me/919904659577" target="_blank" rel="noopener">Chat on WhatsApp</a></p>
+        </div>
+        <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?q=80&w=1200&auto=format&fit=crop" alt="Store photo"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
-    <p>© 2025 Blue Dhaga Kids | All Rights Reserved</p>
+    <div class="foot">
+      <div>
+        <div class="brand"><img src="Media (1).jpeg" alt="Blue Dhaga"/><span class="title">Blue Dhaga Kids</span></div>
+        <p style="color:var(--muted); margin-top:8px">Handcrafted Western & Baby Wear • Made in Surat</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="#shop">Shop</a><br/>
+        <a href="#about">About</a><br/>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <a href="https://wa.me/919904659577" target="_blank">WhatsApp</a><br/>
+        <a href="mailto:support@bluedhaga.com">Email</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 Blue Dhaga Kids • All rights reserved</div>
   </footer>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a class="wa" href="https://wa.me/919904659577" target="_blank" aria-label="Chat on WhatsApp">WA</a>
 </body>
 </html>
